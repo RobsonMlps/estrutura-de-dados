@@ -26,5 +26,10 @@ print(minhaLista.primeiro.valor)
 
 #Criando um elemento qualquer
 minhaLista.primeiro.proximo = minhaLista.criarNovoElemento(23)
+#add elemento 3
+minhaLista.primeiro.proximo.proximo = minhaLista.criarNovoElemento(35)
+#add elemento 4
+minhaLista.primeiro.proximo.proximo.proximo = minhaLista.criarNovoElemento(43)
+
 
 print(minhaLista.primeiro.proximo.valor)

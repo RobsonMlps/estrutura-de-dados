@@ -31,6 +31,12 @@ class Lista:
             # NAO TEM ELEMENTO
             self.primeiro = self.criarNovoElemento(valorQualquer)
 
+    # Adiciona um novo elemento no início da lista
+    def addElementoNoInicio(self, valorQualquer):
+        novo = self.criarNovoElemento(valorQualquer)
+        novo.proximo = self.primeiro
+        self.primeiro = novo
+
     # Remove o último elemento da lista
     def removeUltimoElemento(self):
         if self.primeiro is None:
@@ -43,6 +49,13 @@ class Lista:
         while aux.proximo.proximo is not None:
             aux = aux.proximo
         aux.proximo = None
+
+    # Remove o primeiro elemento da lista
+    def removeOPrimeiroElemento(self):
+        if self.primeiro is None:
+            return  # Lista vazia, nada a remover
+        self.primeiro = self.primeiro.proximo
+        
 ##------------------------------------------------##
 ## MAIN ##
 
@@ -54,10 +67,16 @@ minhaLista.addElementoNoFinal(92)
 minhaLista.addElementoNoFinal(93)
 minhaLista.addElementoNoFinal(94)
 
+# Adicionando um elemento no início
+minhaLista.addElementoNoInicio(90)
 minhaLista.imprimeLista()
 
 ## Removendo o último elemento
 minhaLista.removeUltimoElemento()
 
 print("Após remover o último elemento:")
+minhaLista.imprimeLista()
+# removendo o primeiro elemento
+print("Após remover o primeiro elemento:")
+minhaLista.removeOPrimeiroElemento()
 minhaLista.imprimeLista()

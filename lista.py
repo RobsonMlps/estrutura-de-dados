@@ -17,7 +17,7 @@ class Lista:
                 aux = aux.proximo
         else:
             print("--- Lista Vazia ---")
-            
+
     # Adiciona um novo elemento no final da lista
     def addElementoNoFinal(self, valorQualquer):
         aux = self.primeiro
@@ -52,6 +52,7 @@ minhaLista = Lista()
 minhaLista.addElementoNoFinal(91)
 minhaLista.addElementoNoFinal(92)
 minhaLista.addElementoNoFinal(93)
+minhaLista.addElementoNoFinal(94)
 
 minhaLista.imprimeLista()
 

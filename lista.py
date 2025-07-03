@@ -8,28 +8,55 @@ class Lista:
     def criarNovoElemento(self, valorQualquer):
         e = Elemento(valorQualquer, None)
         return e
+
+    def imprimeLista(self):
+        aux = self.primeiro
+        if(aux != None):
+            while(aux != None):
+                print(aux.valor)
+                aux = aux.proximo
+        else:
+            print("--- Lista Vazia ---")
+            
+    # Adiciona um novo elemento no final da lista
+    def addElementoNoFinal(self, valorQualquer):
+        aux = self.primeiro
+        if(aux != None):
+            # se nao for vazio JA TEM ELEMENTO
+            while(aux.proximo != None):
+                aux = aux.proximo
+            # neste ponto o aux aponta para o ultimo elemento
+            aux.proximo = self.criarNovoElemento(valorQualquer)
+        else:
+            # NAO TEM ELEMENTO
+            self.primeiro = self.criarNovoElemento(valorQualquer)
+
+    # Remove o último elemento da lista
+    def removeUltimoElemento(self):
+        if self.primeiro is None:
+            return  # Lista vazia, nada a remover
+        if self.primeiro.proximo is None:
+            # Só tem um elemento
+            self.primeiro = None
+            return
+        aux = self.primeiro
+        while aux.proximo.proximo is not None:
+            aux = aux.proximo
+        aux.proximo = None
 ##------------------------------------------------##
 ## MAIN ##
 
 #Criando uma lista VAZIA
 minhaLista = Lista()
 
-#Criando um elemento qualquer
-e1 = minhaLista.criarNovoElemento(12)
+minhaLista.addElementoNoFinal(91)
+minhaLista.addElementoNoFinal(92)
+minhaLista.addElementoNoFinal(93)
 
-#Adicionando um elemento à lista
-minhaLista.primeiro = e1
+minhaLista.imprimeLista()
 
-#Testando o primeiro elemento da lista
-print(minhaLista.primeiro.valor)
+## Removendo o último elemento
+minhaLista.removeUltimoElemento()
 
-
-#Criando um elemento qualquer
-minhaLista.primeiro.proximo = minhaLista.criarNovoElemento(23)
-#add elemento 3
-minhaLista.primeiro.proximo.proximo = minhaLista.criarNovoElemento(35)
-#add elemento 4
-minhaLista.primeiro.proximo.proximo.proximo = minhaLista.criarNovoElemento(43)
-
-
-print(minhaLista.primeiro.proximo.valor)
+print("Após remover o último elemento:")
+minhaLista.imprimeLista()
